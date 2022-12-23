@@ -41,6 +41,10 @@ h3 {
   font-size: var(--heading3);
 }
 
+span > img {
+  transition: 0.2s;
+}
+
 body, h1, h2, h3, p, figure, ul {
   margin: 0;
   padding: 0;
