@@ -3,11 +3,26 @@ import Container from 'components/container'
 import PostBody from 'components/post-body'
 import Contact from 'components/contact'
 import { TwoColumn, TwoColumnMain, TwoColumnSidebar } from 'components/two-column'
+import Image from 'next/image'
+import eyecatch from 'images/about.jpg'
 export default function About() {
     return (
         <Container>
             <Hero title="About" subtitle="About development activities" />
 
+                <figure>
+                    <Image
+                        src={eyecatch}
+                        alt=""
+                        sizes="(min-width: 1152px) 1152px, 100vw"
+                        placeholder="blur"
+                        priority
+                        style={{
+                          width: '100%',
+                          height: 'auto',
+                        }}
+                    />
+                </figure>
             <TwoColumn>
                 <TwoColumnMain>
                     <PostBody>
