@@ -1,28 +1,37 @@
 import Hero from 'components/hero'
+import Head from 'next/head'
 import Container from 'components/container'
 import PostBody from 'components/post-body'
 import Contact from 'components/contact'
 import { TwoColumn, TwoColumnMain, TwoColumnSidebar } from 'components/two-column'
 import Image from 'next/image'
 import eyecatch from 'images/about.jpg'
+import Meta from 'components/meta'
 export default function About() {
     return (
         <Container>
+            <Meta
+                pageTitle='アバウト'
+                pageDesc='About development activities'
+                pageImg={eyecatch.src}
+                pageImgW={eyecatch.width}
+                pageImgH={eyecatch.height}
+            />
             <Hero title="About" subtitle="About development activities" />
 
-                <figure>
-                    <Image
-                        src={eyecatch}
-                        alt=""
-                        sizes="(min-width: 1152px) 1152px, 100vw"
-                        placeholder="blur"
-                        priority
-                        style={{
-                          width: '100%',
-                          height: 'auto',
-                        }}
-                    />
-                </figure>
+            <figure>
+                <Image
+                    src={eyecatch}
+                    alt=""
+                    sizes="(min-width: 1152px) 1152px, 100vw"
+                    placeholder="blur"
+                    priority
+                    style={{
+                        width: '100%',
+                        height: 'auto',
+                    }}
+                />
+            </figure>
             <TwoColumn>
                 <TwoColumnMain>
                     <PostBody>
