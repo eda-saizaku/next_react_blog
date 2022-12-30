@@ -1,14 +1,14 @@
 import { getPostBySlug } from 'lib/api'
 import { GetServerSidePropsContext, InferGetServerSidePropsType } from 'next'
 import Container from 'components/container'
+import PostHeader from 'components/post-header'
 
 type Props = InferGetServerSidePropsType<typeof getStaticProps>
 
 const Page = ({ title, publish, content, eyecatch, categories }: Props) => {
   return (
     <Container>
-      <h1>{title}</h1>
-      <div>{content}</div>
+      <PostHeader title={title} subtitle="Blog Article" publish={publish} />
     </Container>
   )
 }
