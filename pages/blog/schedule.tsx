@@ -11,12 +11,28 @@ import {
   TwoColumnMain,
   TwoColumnSidebar,
 } from 'components/two-column'
+import { extractText } from 'lib/extract-text'
+import Meta from 'components/meta'
 
 type Props = InferGetServerSidePropsType<typeof getStaticProps>
 
-const Page = ({ title, publish, content, eyecatch, categories }: Props) => {
+const Page = ({
+  title,
+  publish,
+  content,
+  eyecatch,
+  categories,
+  description,
+}: Props) => {
   return (
     <Container>
+      <Meta
+        pageTitle={title}
+        pageDesc={description}
+        pageImg={eyecatch.url}
+        pageImgW={eyecatch.width}
+        pageImgH={eyecatch.height}
+      />
       <article>
         <PostHeader title={title} subtitle="Blog Article" publish={publish} />
 
@@ -51,7 +67,9 @@ const Page = ({ title, publish, content, eyecatch, categories }: Props) => {
 }
 export async function getStaticProps({}: GetServerSidePropsContext) {
   const slug = 'schedule'
-  const post = getPostBySlug(slug)
+  const post = getPostBySlug(slug) as any //TODO: as anyってどうなんだろう？
+  const content = post.content
+  const description = extractText(content)
   let res
   try {
     res = await post
@@ -65,6 +83,7 @@ export async function getStaticProps({}: GetServerSidePropsContext) {
       content: res.content,
       eyecatch: res.eyecatch,
       categories: res.categories,
+      description: description,
     },
   }
 }
