@@ -26,10 +26,15 @@ export default function Posts({ posts }: prop) {
               <Image
                 src={eyecatch.url}
                 alt=""
-                fill
+                width={eyecatch.width}
+                height={eyecatch.height}
                 sizes="(min-width: 1152px) 576px, 50vw"
                 placeholder="blur"
                 blurDataURL={eyecatch.blurDataURL}
+                style={{
+                  width: '100%',
+                  height: 'auto',
+                }}
               />
             </figure>
             <h2>{title}</h2>
