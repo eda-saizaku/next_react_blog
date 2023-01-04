@@ -56,6 +56,7 @@ export default function Post({
             }}
             placeholder="blur"
             blurDataURL={eyecatch.blurDataURL}
+            key={eyecatch.url}
           />
         </figure>
 
